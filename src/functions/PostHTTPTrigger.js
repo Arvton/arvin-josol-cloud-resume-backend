@@ -1,5 +1,5 @@
 const { app } = require('@azure/functions');
-const { TableClient } = require('@azure/data-tables');
+const { TableClient, AzureNamedKeyCredential } = require('@azure/data-tables');
 
 const tableName = 'Visitors';
 const partitionKey = '1';
@@ -9,8 +9,9 @@ app.http('PostHTTPTrigger', {
     methods: ['POST'],
     authLevel: 'anonymous',
     handler: async (request, context) => {
-        const connectionString = process.env['COSMOS_TABLE']; // Get the connection string from environment variables
-        const tableClient = new TableClient(connectionString, tableName);
+        const account = process.env['COSMOS_ACCOUNT']; // Get the account name from environment variables
+        const accountKey = process.env['COSMOS_ACCOUNT_KEY']; // Get the account key from environment variables
+        const tableClient = new TableClient(`https://${account}.table.core.windows.net`, tableName, new AzureNamedKeyCredential(account, accountKey));
 
         // Retrieve the existing entity
         const entity = await tableClient.getEntity(partitionKey, rowKey);
