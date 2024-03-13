@@ -1,7 +1,7 @@
 const { app, output } = require('@azure/functions');
 
 const tableOutput = output.table({
-    tableName: 'visitor-count',
+    tableName: 'Visitors',
     connection: 'COSMOS_TABLE',
 });
 
