@@ -9,7 +9,7 @@ const account = process.env['COSMOS_ACCOUNT']; // Get the account name from envi
 const accountKey = process.env['COSMOS_ACCOUNT_KEY']; // Get the account key from environment variables
 
 const sharedKeyCredential = new AzureNamedKeyCredential(account, accountKey);
-const tableClient = new TableClient(`https://${account}.table.core.windows.net`, tableName, sharedKeyCredential);
+const tableClient = new TableClient(`https://${account}.table.cosmos.azure.com:443/`, tableName, sharedKeyCredential);
 
 app.http('PostHTTPTrigger', {
     methods: ['POST'],
