@@ -11,12 +11,11 @@ app.http('PostHTTPTrigger', {
     extraOutputs: [tableOutput],
     handler: async (request, context) => {
         const rows = [];
-        const { PartitionKey, RowKey, Name } = request.body;
         for (let i = 1; i < 10; i++) {
             rows.push({
-                PartitionKey,
-                RowKey: RowKey + i.toString(),
-                Name: Name + ` ${i}`,
+                PartitionKey: 'Test',
+                RowKey: i.toString(),
+                Name: `Name ${i}`,
             });
         }
         context.extraOutputs.set(tableOutput, rows);
