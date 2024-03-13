@@ -9,7 +9,7 @@ app.http('PostHTTPTrigger', {
     methods: ['POST'],
     authLevel: 'anonymous',
     handler: async (request, context) => {
-        const connectionString = process.env[COSMOS_TABLE]; // Get the connection string from environment variables
+        const connectionString = process.env['COSMOS_TABLE']; // Get the connection string from environment variables
         const tableClient = new TableClient(connectionString, tableName);
 
         // Retrieve the existing entity
