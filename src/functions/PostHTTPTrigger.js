@@ -2,8 +2,8 @@ const { app } = require('@azure/functions');
 const { TableClient } = require('@azure/data-tables');
 
 const tableName = 'Visitors';
-const partitionKey = '1';
-const rowKey = '1';
+const partitionKey = '1000';
+const rowKey = '1000';
 
 app.http('PostHTTPTrigger', {
     methods: ['POST'],
