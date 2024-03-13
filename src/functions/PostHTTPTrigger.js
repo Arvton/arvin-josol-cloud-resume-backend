@@ -5,14 +5,16 @@ const tableName = 'Visitors';
 const partitionKey = '1';
 const rowKey = '1';
 
+const account = process.env['COSMOS_ACCOUNT']; // Get the account name from environment variables
+const accountKey = process.env['COSMOS_ACCOUNT_KEY']; // Get the account key from environment variables
+
+const sharedKeyCredential = new AzureNamedKeyCredential(account, accountKey);
+const tableClient = new TableClient(`https://${account}.table.core.windows.net`, tableName, sharedKeyCredential);
+
 app.http('PostHTTPTrigger', {
     methods: ['POST'],
     authLevel: 'anonymous',
     handler: async (request, context) => {
-        const account = process.env['COSMOS_ACCOUNT']; // Get the account name from environment variables
-        const accountKey = process.env['COSMOS_ACCOUNT_KEY']; // Get the account key from environment variables
-        const tableClient = new TableClient(`https://${account}.table.core.windows.net`, tableName, new AzureNamedKeyCredential(account, accountKey));
-
         // Retrieve the existing entity
         const entity = await tableClient.getEntity(partitionKey, rowKey);
 
