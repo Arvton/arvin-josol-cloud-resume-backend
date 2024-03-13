@@ -21,5 +21,5 @@ app.http('PostHTTPTrigger', {
         }
         context.extraOutputs.set(tableOutput, rows);
         return { status: 201 };
-    }
+    },
 });
