@@ -18,6 +18,9 @@ app.http('PostHTTPTrigger', {
         // Retrieve the existing entity
         const entity = await tableClient.getEntity(partitionKey, rowKey);
 
+        // Remove the 'odata.metadata' property
+        delete entity['odata.metadata'];
+
         // Increment the Count value
         entity.Count = (entity.Count || 0) + 1;
 
