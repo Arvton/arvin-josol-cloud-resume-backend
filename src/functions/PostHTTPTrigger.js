@@ -27,6 +27,13 @@ app.http('PostHTTPTrigger', {
         // Update the entity in the table
         await tableClient.updateEntity(entity, 'Replace');
 
-        return { status: 200, body: { Count: entity.Count } };
+        // Return the updated Count value in the HTTP response
+        context.res = {
+            status: 200,
+            body: { Count: entity.Count },
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
     },
 });
