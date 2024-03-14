@@ -30,7 +30,7 @@ app.http('PostHTTPTrigger', {
         // Set the HTTP response
         context.res = {
             status: 200,
-            body: { Count: entity.Count },
+            body: JSON.stringify({ Count: entity.Count }),
             headers: {
                 'Content-Type': 'application/json'
             }
