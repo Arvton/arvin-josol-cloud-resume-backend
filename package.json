@@ -4,11 +4,15 @@
   "description": "",
   "scripts": {
     "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "test": "echo \"No tests yet...\"",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@azure/data-tables": "^13.2.2",
     "@azure/functions": "^4.0.0"
   },
-  "main": "src/functions/*.js"
+  "main": "src/functions/*.js",
+  "devDependencies": {
+    "cypress": "^13.7.1"
+  }
 }
