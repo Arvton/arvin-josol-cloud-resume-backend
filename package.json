@@ -10,5 +10,9 @@
     "@azure/data-tables": "^13.2.2",
     "@azure/functions": "^4.0.0"
   },
-  "main": "src/functions/*.js"
+  "main": "src/functions/*.js",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^22.5.0"
+  }
 }
